@@ -51,7 +51,7 @@ def scrape_album_page(album_url, album):
             data[artist_name] = {'albums': [(album, img)],
                                  'location': location,
                                  'styles': genre_list,
-                                 'wesites': band_links_list,
+                                 'websites': band_links_list,
                                  'bio': bio
                                  }
         else:
@@ -66,8 +66,9 @@ def scrape_album_page(album_url, album):
 # all_bands_url_generator()
 with open('./band_data.json') as d:
     the_data = json.load(d)
-    for band in the_data:
+    print(list(the_data['Lena Raine'].keys()))
+    # for band in the_data:
         # print(the_data(band))
-        locations = []
-        locations.append(the_data[band]['location'])
-        print(sorted(locations))
+        # locations = []
+        # locations.append(the_data[band]['location'])
+        # print(sorted(locations))
