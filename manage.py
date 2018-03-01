@@ -1,14 +1,15 @@
 """Database migration settings."""
 import os
 
-from app import app, db
+from app import create_app, db
+from app import models
 
 from flask_migrate import Migrate, MigrateCommand
 
 from flask_script import Manager
 
 
-# app.config.from_object(os.environ['APP_SETTINGS'])
+app = create_app(config_name=os.getenv('APP_SETTINGS'))
 
 migrate = Migrate(app, db)
 manager = Manager(app)

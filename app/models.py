@@ -1,26 +1,7 @@
-"""Flask server to serve local band data."""
-import json
-import os
-
-from flask import Flask
-
-from flask_sqlalchemy import SQLAlchemy
-
-# from models import Band
+"""Models for local bands database."""
+from app import db
 
 from sqlalchemy.dialects.postgresql import JSON
-
-app = Flask(__name__)
-
-
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', '')
-db = SQLAlchemy(app)
-
-
-@app.route("/api/all")
-def all_bands():
-    """Base api rounte, return all bands."""
-    return "Welcome!"
 
 
 class Band(db.Model):
@@ -50,28 +31,16 @@ class Band(db.Model):
         self.websites = websites
         self.bio = bio
 
+    @staticmethod
+    def get_all():
+        """Return entire db."""
+        return Band.query.all()
+
+    def delete(self):
+        """Delete db entry."""
+        db.session.delete(self)
+        db.session.commit()
+
     def __repr__(self):
         """Object representation for query."""
         return '<name {}>'.format(self.name)
-
-
-def populate_db():
-    """Populate db with band data."""
-    with open('./band_data.json') as d:
-        the_data = json.load(d)
-        for band in the_data:
-            entry = Band(band,
-                         the_data[band]['albums'],
-                         the_data[band]['location'],
-                         the_data[band]['styles'],
-                         the_data[band]['websites'],
-                         the_data[band]['bio'])
-            db.session.add(entry)
-            db.session.commit()
-
-
-populate_db()
-
-
-if __name__ == "__main__":
-    app.run()
