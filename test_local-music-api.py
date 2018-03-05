@@ -6,23 +6,22 @@ import unittest
 
 from app import create_app, db
 
-class BucketlistTestCase(unittest.TestCase):
-    """This class represents the bucketlist test case"""
+
+class LocalMusicAPITestCase(unittest.TestCase):
+    """Test class for api."""
 
     def setUp(self):
         """Define test variables and initialize app."""
         self.app = create_app(config_name="testing")
         self.client = self.app.test_client
-        self.bucketlist = {'name': 'Go to Borabora for vacation'}
+        self.band = {'name': 'test'}
 
-        # binds the app to the current context
         with self.app.app_context():
-            # create all tables
             db.create_all()
 
-    def test_bucketlist_creation(self):
-        """Test API can create a bucketlist (POST request)"""
-        res = self.client().post('/bucketlists/', data=self.bucketlist)
+    def test_band_creation(self):
+        """Test API can create a band (POST request)."""
+        res = self.client().post('/band/', data=self.band)
         self.assertEqual(res.status_code, 201)
         self.assertIn('Go to Borabora', str(res.data))
 
@@ -78,6 +77,5 @@ class BucketlistTestCase(unittest.TestCase):
             db.session.remove()
             db.drop_all()
 
-# Make the tests conveniently executable
 if __name__ == "__main__":
     unittest.main()

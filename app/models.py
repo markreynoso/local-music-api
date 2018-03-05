@@ -7,7 +7,7 @@ from sqlalchemy.dialects.postgresql import JSON
 class Band(db.Model):
     """Band model."""
 
-    __tablename__ = "bands"
+    __tablename__ = 'bands'
     id = db.Column(db.Integer, primary_key=True)
     # name = db.Column(db.String(120), nullable=False)
     # albums = db.Column(db.Text, nullable=True)
@@ -15,7 +15,7 @@ class Band(db.Model):
     # styles = db.Column(db.Text, nullable=False)
     # websites = db.Column(db.Text, nullable=True)
     # bio = db.Column(db.Text, nullable=True)
-    name = db.Column(JSON)
+    name = db.Column(JSON, nullable=False)
     albums = db.Column(JSON)
     location = db.Column(JSON)
     styles = db.Column(JSON)
