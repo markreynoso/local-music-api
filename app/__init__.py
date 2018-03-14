@@ -1,4 +1,5 @@
 """Initialize app."""
+import json
 from flask import abort, jsonify, request
 
 from flask_api import FlaskAPI
@@ -116,7 +117,7 @@ def create_app(config_name):
         # band_styles = request.args.get('styles')
 
         import pdb; pdb.set_trace()
-        band_search = Band.query.filter_by(name=band_name).first()
+        band_search = Band.query.filter_by(bands.data['name'].astext == band_name).first()
         if not band_search:
             abort(404)
 
@@ -154,5 +155,20 @@ def create_app(config_name):
             })
             response.status_code = 200
             return response
+
+    # @app.route('/api/bands/load/', methods=['GET'])
+    # def bands_load():
+    #     with open('band_data.json') as d:
+    #         the_data = json.load(d)
+    #         for band in the_data:
+    #             entry = Band(band,
+    #                          the_data[band]['albums'],
+    #                          the_data[band]['location'],
+    #                          the_data[band]['styles'],
+    #                          the_data[band]['websites'],
+    #                          the_data[band]['bio'])
+    #             db.session.add(entry)
+    #             db.session.commit()
+    #     return 'thanks'
 
     return app

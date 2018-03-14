@@ -1,7 +1,7 @@
 """Models for local bands database."""
 from app import db
 
-from sqlalchemy.dialects.postgresql import JSON
+from sqlalchemy.dialects.postgresql import JSONB
 
 
 class Band(db.Model):
@@ -11,16 +11,16 @@ class Band(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     # name = db.Column(db.String(120), nullable=False)
     # albums = db.Column(db.Text, nullable=True)
-    # location = db.Column(db.String(120), nullable=False)
-    # styles = db.Column(db.Text, nullable=False)
+    # location = db.Column(db.String(120), nullable=True)
+    # styles = db.Column(db.Text, nullable=True)
     # websites = db.Column(db.Text, nullable=True)
     # bio = db.Column(db.Text, nullable=True)
-    name = db.Column(JSON, nullable=False)
-    albums = db.Column(JSON)
-    location = db.Column(JSON)
-    styles = db.Column(JSON)
-    websites = db.Column(JSON)
-    bio = db.Column(JSON)
+    name = db.Column(JSONB, nullable=False)
+    albums = db.Column(JSONB)
+    location = db.Column(JSONB)
+    styles = db.Column(JSONB)
+    websites = db.Column(JSONB)
+    bio = db.Column(JSONB)
 
     def __init__(self, name, albums, location, styles, websites, bio):
         """Initialize model data."""
