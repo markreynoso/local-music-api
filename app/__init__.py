@@ -141,20 +141,20 @@ def create_app(config_name):
             return response
 
     # <----------- use only to load db ------------>
-    @app.route('/api/bands/load/', methods=['GET'])
-    def load_db_bands():
-        band = mongo.db.bands
-        with open('band_data.json') as d:
-            the_data = json.load(d)
-            for entry in the_data:
-                band.insert({
-                    'name': entry.lower(),
-                    'albums': the_data[entry]['albums'],
-                    'location': the_data[entry]['location'].lower(),
-                    'styles': the_data[entry]['styles'],
-                    'websites': the_data[entry]['websites'],
-                    'bio': the_data[entry]['bio']
-                })
-        return 'Thanks!'
+    # @app.route('/api/bands/load/', methods=['GET'])
+    # def load_db_bands():
+    #     band = mongo.db.bands
+    #     with open('band_data.json') as d:
+    #         the_data = json.load(d)
+    #         for entry in the_data:
+    #             band.insert({
+    #                 'name': entry.lower(),
+    #                 'albums': the_data[entry]['albums'],
+    #                 'location': the_data[entry]['location'].lower(),
+    #                 'styles': the_data[entry]['styles'],
+    #                 'websites': the_data[entry]['websites'],
+    #                 'bio': the_data[entry]['bio']
+    #             })
+    #     return 'Thanks!'
 
     return app
