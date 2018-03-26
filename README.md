@@ -86,14 +86,15 @@ The URLS for this project can be found in the following modules:
 | URL module | Description |
 |:---:|:---:|
 | /api/bands | Return full database list of bands. |
-| /api/bands/search? | Return band with search name, if exists. To search, use `name={search name}`. Will only return exact match. |
-| /api/bands/match? | Return list of bands matching your style(s) preference. To match styles, use `styles={style}` for single and to add styles separate with underscore `_`, i.e. `styles={style1}_{style2}`. Will return a list of bands with matching styles. |
+| /api/bands/search? | Return band with search name, if exists.<br>To search, use `name={search name}`.<br>Will only return exact match. |
+| /api/bands/match? | Return list of bands matching your style(s) preference.<br>To match styles, use `styles={style}` for single and to add styles separate with underscore `_`,<br>i.e. `styles={style1}_{style2}`.<br>Will return a list of bands with matching styles. |
 
 
 ### Development Tools
 ---
 * *python* - programming language
 * *flask* - web framework
+* *mongodb* - nosql database
 
 ### License
 ---
