@@ -2,7 +2,7 @@
 ---
 ### NW Music Scene API
 * Version: 1.0.0
-* URL: [nwmusicscene.herokuapp.com](https://www.nwmusicscene.herokuapp.com)
+* URL: [nwmusicscene.herokuapp.com](https://nwmusicscene.herokuapp.com)
 
 NW Music Scene is a growing database of bands local to the Pacific Northwest. Finding local music is not always easy, so this project is looking to make finding and supporting your local musicians easier and more intuitive. 
 
@@ -13,7 +13,7 @@ The NW Music Scene API is a searchable database which can be used to lookup more
 
 ### Authors
 ---
-* [markreynoso](https://github.com/markreynoso/local-music-api)
+* [Mark Reynoso](https://github.com/markreynoso/local-music-api)
 
 ### Dependencies
 ---
